@@ -7,7 +7,7 @@ void solve() {
 }
 
 int main() {
-    int t;
+    int t = 1;
     //scanf("%d", &t);
 
     while (t--) {
