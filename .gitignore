@@ -54,5 +54,8 @@ dkms.conf
 # Output files
 output/
 
+# Test
+test/
+
 # Visual Studio Code #
 .vscode/*
