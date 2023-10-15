@@ -4,7 +4,7 @@
 #include "stack.h"
 
 char* solve(int t) {
-    int* cars = malloc(t * sizeof(int)), init = 1, y;
+    int* cars = malloc(t * sizeof(int)), init = 1;
     for (int i = 0; i < t; i++) scanf(" %d", &cars[i]);
 
     stack* sk = make_stack();
