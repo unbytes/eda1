@@ -1,31 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include "queue.h"
 
-typedef struct queue {
-    int data;
-    struct queue* next;
-} queue;
-
-queue* make_queue() {
-    queue* qs = (queue*)malloc(sizeof(queue));
-    qs->next = NULL;
-    return qs;
-}
-
-bool empty(queue* f) {
-    return f == NULL || f->next == NULL;
-}
-
-queue* push(queue* f, int x) {
-    queue* new = make_queue();
-    new->next = f->next;
-    f->next = new;
-    f->data = x;
-    return new;
-}
-
-void solve(int p, int r, int t) {
+int solve(int p, int r) {
     int m, n, j;
 
     queue* start = make_queue();
@@ -51,8 +29,7 @@ void solve(int p, int r, int t) {
         }
     }
 
-    printf("Teste %d\n", t);
-    printf("%d\n", start->next->data);
+    return front(start)->data;
 }
 
 int main() {
@@ -62,7 +39,8 @@ int main() {
         scanf("%d %d", &p, &r);
         if (p == 0 && r == 0) break;
 
-        solve(p, r, t++);
+        printf("Teste %d\n", t++);
+        printf("%d\n", solve(p, r));
     }
 
     return 0;
