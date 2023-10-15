@@ -5,7 +5,7 @@
 #include "stack.h"
 
 char string[100007];
-void solve() {
+char solve() {
     scanf("%s", string);
 
     stack* sk = make_stack();
@@ -13,22 +13,17 @@ void solve() {
     for (int i = 0; i < len; i++) {
         if (string[i] == '[' || string[i] == '{' || string[i] == '(') push(sk, string[i]);
         else {
-            char y;
             if (!empty(sk)) {
                 int y = top(sk);
                 pop(sk);
 
-                if (y == string[i] - 1 || y == string[i] - 2) continue;
-            }
-            else {
-                printf("N\n");
-                return;
-            }
+                if (y != string[i] - 1 && y != string[i] - 2) return 'N';
+            } else return 'N';
         }
     }
 
-    if (!empty(sk)) printf("N\n");
-    else printf("S\n");
+    if (!empty(sk)) return 'N';
+    else return 'S';
 }
 
 int main() {
@@ -36,7 +31,7 @@ int main() {
     scanf("%d", &t);
 
     while (t--) {
-        solve();
+        printf("%c\n", solve());
     }
 
     return 0;
