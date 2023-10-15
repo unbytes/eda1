@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include "stack.h"
 
-void solve(int t) {
+char* solve(int t) {
     int* cars = malloc(t * sizeof(int)), init = 1, y;
     for (int i = 0; i < t; i++) scanf(" %d", &cars[i]);
 
@@ -16,14 +16,11 @@ void solve(int t) {
                 init++;
             }
 
-            if (!empty(sk) && top(sk) < cars[i]) {
-                printf("no\n");
-                return;
-            }
+            if (!empty(sk) && top(sk) < cars[i]) return "no";
             push(sk, cars[i]);
         }
     }
-    printf("yes\n");
+    return "yes";
 }
 
 int main() {
@@ -33,7 +30,7 @@ int main() {
         scanf("%d", &t);
         if (t == 0) break;
 
-        solve(t);
+        printf("%s\n", solve(t));
     }
 
     return 0;
