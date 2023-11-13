@@ -161,9 +161,10 @@ def get_observation() -> str:
 Para compilar os códigos que utilizam as bibliotecas customizadas da pasta `libs` é necessário utilizar o seguinte comando:
 
 ```bash
-gcc -I libs -o listas/XX/code/output/YY listas/XX/code/YY.c
+mkdir "listas/XX/code/output"
+gcc -I libs -o "listas/XX/code/output/YY" "listas/XX/code/YY.c"
 
-./listas/XX/code/output/YY
+"./listas/XX/code/output/YY"
 ```
 
 Em que `XX` é o número da lista e `YY` é o número do exercício."""
