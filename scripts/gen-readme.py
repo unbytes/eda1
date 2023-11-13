@@ -126,7 +126,9 @@ def get_exercises_md() -> str:
         md += f"    <details>\n        <summary>Lista {section['name']}</summary>\n"
         md += "        <ul>\n"
         for code_section in section["lists"]:
-            md += f"            <li><a target='_self' href='https://github.com/unbytes/eda1/tree/main{code_section['path']}'>{code_section['name']}</a></li>\n"
+            section = code_section['path'].split('/')[2]
+            exercise = code_section['name'].split('(')[1].split(')')[0]
+            md += f"            <li><a target='_self' href='https://github.com/unbytes/eda1/tree/main{code_section['path']}'>{code_section['name']}</a> - (<a target='_self' href='https://github.com/unbytes/eda1/blob/main/listas/{section}/docs/{exercise}.pdf'>PDF</a>)</li>\n"
 
         md += "    </ul>\n    </details>\n"
     
