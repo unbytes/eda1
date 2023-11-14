@@ -165,6 +165,23 @@
     </details>
 </div>
 
+## :package: Pacotes (Algoritmos)
+
+- [Binary Search](https://github.com/unbytes/eda1/blob/main/libs/binary_search.h)
+- [Bubble Sort](https://github.com/unbytes/eda1/blob/main/libs/bubble_sort.h)
+- [Insertion Sort](https://github.com/unbytes/eda1/blob/main/libs/insertion_sort.h)
+- [Lower Bound](https://github.com/unbytes/eda1/blob/main/libs/lower_bound.h)
+- [Merge Sort](https://github.com/unbytes/eda1/blob/main/libs/merge_sort.h)
+- [Min](https://github.com/unbytes/eda1/blob/main/libs/min.h)
+- [Min Index](https://github.com/unbytes/eda1/blob/main/libs/min_index.h)
+- [Pair Int](https://github.com/unbytes/eda1/blob/main/libs/pair_int.h)
+- [Queue](https://github.com/unbytes/eda1/blob/main/libs/queue.h)
+- [Quick Sort](https://github.com/unbytes/eda1/blob/main/libs/quick_sort.h)
+- [Selection Sort](https://github.com/unbytes/eda1/blob/main/libs/selection_sort.h)
+- [Selection Sort Rec](https://github.com/unbytes/eda1/blob/main/libs/selection_sort_rec.h)
+- [Stack](https://github.com/unbytes/eda1/blob/main/libs/stack.h)
+- [Swap](https://github.com/unbytes/eda1/blob/main/libs/swap.h)
+
 ## :man_teacher: Professora
 
 - [Rose Yuri Shimizu](https://sigaa.unb.br/sigaa/public/docente/portal.jsf?siape=1276557)
