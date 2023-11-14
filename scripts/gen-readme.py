@@ -82,10 +82,10 @@ def get_section_name(section: str) -> str:
 
 
 def valid_file(file: Path) -> bool:
-    return file.is_file() and file.name.endswith((".c"))
+    return file.is_file() and file.name.endswith((".c", ".h"))
 
 
-def get_lists_name(list_file: str) -> str:
+def get_file_text_name(list_file: str) -> str:
     name, _ = list_file.split(".")
     name = name.replace("-", " ")
     name = name.replace("_", " ")
@@ -96,43 +96,77 @@ def get_relative_path(file: Path) -> str:
     return str(file).split("..")[1]
 
 
-def get_exercises_md() -> str:
-    listPath = Path(__file__).parent / ".." / "listas"
+def get_files_from_dir(dir: str) -> list:
+    cur_path = Path(__file__).parent / ".." / dir
     output = list()
-    for section in os.listdir(listPath):
-        if valid_section(listPath / section):
-            current = {"name": get_section_name(section), "lists": list()}
-            for code_section in os.listdir(listPath / section):
-                if code_section != "code":
+
+    for section in os.listdir(cur_path):
+        is_file = False
+        current = {"name": get_section_name(section), "folder": list()}
+        if valid_section(cur_path / section):
+            for cur_section in os.listdir(cur_path / section):
+                if cur_section != "code":
                     continue
 
-                for list_file in os.listdir(listPath / section / code_section):
-                    if valid_file(listPath / section / code_section / list_file):
-                        current["lists"].append(
+                for list_file in os.listdir(cur_path / section / cur_section):
+                    if valid_file(cur_path / section / cur_section / list_file):
+                        current["folder"].append(
                             {
-                                "name": get_lists_name(list_file),
-                                "path": get_relative_path(listPath / section / code_section / list_file),
+                                "name": get_file_text_name(list_file),
+                                "path": get_relative_path(cur_path / section / cur_section / list_file),
                             }
                         )
 
-                current["lists"] = sorted(
-                    current["lists"], key=lambda x: x["name"]
+                current["folder"] = sorted(
+                    current["folder"], key=lambda x: x["name"]
                 )
                 output.append(current)
 
+        elif valid_file(cur_path / section):
+            is_file = True
+            current["folder"].append(
+                {
+                    "name": get_file_text_name(section),
+                    "path": get_relative_path(cur_path / section),
+                }
+            )
+
+        if is_file:
+            current["folder"] = sorted(
+                current["folder"], key=lambda x: x["name"]
+            )
+            output.append(current)
+
     output = sorted(output, key=lambda x: x["name"])
+    return output
+
+
+def get_exercises_md() -> str:
+    output = get_files_from_dir('listas')
     md = "## :computer: Listas de execícios\n\n<div>\n"
     for section in output:
         md += f"    <details>\n        <summary>Lista {section['name']}</summary>\n"
         md += "        <ul>\n"
-        for code_section in section["lists"]:
+        for code_section in section['folder']:
             section = code_section['path'].split('/')[2]
             exercise = code_section['name'].split('(')[1].split(')')[0]
             md += f"            <li><a target='_self' href='https://github.com/unbytes/eda1/tree/main{code_section['path']}'>{code_section['name']}</a> - (<a target='_self' href='https://github.com/unbytes/eda1/blob/main/listas/{section}/docs/{exercise}.pdf'>PDF</a>)</li>\n"
 
         md += "    </ul>\n    </details>\n"
-    
+
     md += "</div>\n\n"
+
+    return md
+
+
+def get_libs() -> str:
+    md = "## :package: Pacotes (Algoritmos)\n\n"
+
+    output = get_files_from_dir('libs')
+    for section in output:
+        for code_section in section['folder']:
+            md += (f"- [{code_section['name']}](https://github.com/unbytes/eda1/blob/main{code_section['path']})\n")
+    md += "\n"
 
     return md
 
@@ -179,6 +213,7 @@ def build_md() -> str:
     md += get_title()
     md += get_syllabus()
     md += get_exercises_md()
+    md += get_libs()
     md += get_teacher()
     md += get_references()
     md += get_observation()
