@@ -8,7 +8,6 @@ int partition(int* arr, int l, int r) {
 
     for (int i = l; i < r; i++) {
         if (arr[i] < pivot) swap(&arr[i], &arr[j++]);
-        else if (arr[j] < pivot) j = i;
     }
     swap(&arr[j], &arr[r]);
 
