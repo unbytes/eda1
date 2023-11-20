@@ -177,6 +177,7 @@
 - [Pair Int](https://github.com/unbytes/eda1/blob/main/libs/pair_int.h)
 - [Queue](https://github.com/unbytes/eda1/blob/main/libs/queue.h)
 - [Quick Sort](https://github.com/unbytes/eda1/blob/main/libs/quick_sort.h)
+- [Quick Sort Median](https://github.com/unbytes/eda1/blob/main/libs/quick_sort_median.h)
 - [Selection Sort](https://github.com/unbytes/eda1/blob/main/libs/selection_sort.h)
 - [Selection Sort Rec](https://github.com/unbytes/eda1/blob/main/libs/selection_sort_rec.h)
 - [Stack](https://github.com/unbytes/eda1/blob/main/libs/stack.h)
