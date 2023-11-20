@@ -180,6 +180,7 @@
 - [Quick Sort Median](https://github.com/unbytes/eda1/blob/main/libs/quick_sort_median.h)
 - [Selection Sort](https://github.com/unbytes/eda1/blob/main/libs/selection_sort.h)
 - [Selection Sort Rec](https://github.com/unbytes/eda1/blob/main/libs/selection_sort_rec.h)
+- [Shell Sort](https://github.com/unbytes/eda1/blob/main/libs/shell_sort.h)
 - [Stack](https://github.com/unbytes/eda1/blob/main/libs/stack.h)
 - [Swap](https://github.com/unbytes/eda1/blob/main/libs/swap.h)
 
